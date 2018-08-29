@@ -1,115 +1,156 @@
-148
+    77
+ans = []
 
+1
     def function():
-        if head is None:
-            return head
 
-        nums = []
-        node = head
-        while node is not None:
-            nums.append(node.val)
-            node = node.next
+        org = [i + 1 for i in range(n)]
+        #ans = [[i+1] for i in range(n)]
 
-        nums.sort()
-        node = head
-        i = 0
-        while node is not None:
-            node.val = nums[i]
-            node = node.next
-            i += 1
+        for l in range(0, k):
+            for i in range()
 
-        return head
+            new = []
+            for i in range(len(ans)):
+                for j in range(l, n):
+                    new.append(ans[i] + org[j])
 
-    39
+            ans = new[:]
 
-    def function(c, t):
+        return ans
 
-        # delete the value which is larger than target
-        avaliable = [v for v in c if c <= t]
+    def p(self, nums):
         result = []
-        values = []
-        while avaliable is not None:
-            if len(result) == 0:
-                for c in avaliable:
-                    if c <= t:
-                        result.append([c])
-                        values.append(c)
-            else:
-                newAvaliable = []
-                newResult = []
-                newValues = []
-                for i in range(len(avaliable)):
-                    c = avaliable[i]
-                    for r in result:
-                        if sum(r) + c < t:
-                            r.append(c)
-                            newResult.append(r[:])
-                            values.append(sum(r))
-                            newAvaliable.append(c)
+        n = len(nums)
+        tmp = [0] * n
 
-                avaliable = newAvaliable[:]
-                result = newResult[:]
-                values = newValues[:]
+        def next_num(a, ni):
+            if ni == n:
+                result.append(copy.copy(tmp))
+                return
+            for lj in range(len(a)):
+                tmp[ni] = a[lj]
+                b = a[:]
+                b.pop(lj)
+                next_num(b, ni + 1)
 
-        return [r for r in result if sum(r) == t]
-
-        82
-
-        def function():
-            nums = []
-            node = head
-            while node is not None:
-                nums.append(node.val)
-                node = node.next
-
-            newNums = []
-            for i in range(len(nums)):
-                if nums.count(nums[i]) == 1:
-                    newNums.append(nums[i])
-
-            ndoe = head
-            if len(newNums) > 0:
-                for i in range(len(newNums)):
-                    node.val = newNums[i]
-                    if i == len(newNums) - 1:
-                        node.next = None
-                    else:
-                        node = node.next
-            else:
-                return None
-
-            return head
+        a = nums[:]
+        next_num(a, 0)
+        return result
 
 
-        100
-        def function():
-            return self.verifyTwo()
+class Solution(object):
 
-        def verifyTwo(self, tr1, tr2):
-            if tr1.val == tr2.val:
-                if (self.theSame(tr1.right, tr2.right) and self.theSame(tr1.left, tr2.left)) is False:
-                    return False
+    def combine(self, candidates, target):
+        if sum(candidates) < target:
+            return []
+        if sum(candidates) == target:
+            return [candidates]
+        candidates = [_ for _ in candidates if _ <= target]
 
-                if tr1.right is not None:
-                    r = self.verifyTwo(tr1.right, tr2.right)
-                    if r is False:
-                        return False
+        total = []
+        for i in range(1, n):
+            total.extend(self.choose(candidates, target, i))
+        return total
 
-                if tr1.left is not None:
-                    r = self.verifyTwo(tr1.left, tr2.left)
-                    if r is False:
-                        return False
+    def choose(self, candidates, target, n)
+        tmp = []
+        result = []
+        def next_num(li, ni):
+            s = sum(arr)
+            if s == target:
+                result.append(copy.copy(arr))
+                tmp.pop()
+                return
+            if s > target:
+                tmp.pop()
+                return
+            if ni == n:
+                tmp.pop()
+                return
+            for lj in range(li, n):
+                tmp.append(candidates[lj])
+                next_num(li + 1, ni + 1)
 
-                return True
+        next_num()
 
-            else:
-                return False
+        return result
 
-        def theSame(self, n1, n2):
-            if n1 is not None and n2 is not None:
-                return True
 
-            if n1 is None and n2 is None:
-                return True
 
-            return False
+
+
+
+
+
+
+def f():
+    def a():
+        if len(nums) == 0 or len(nums) == 1:
+            return nums
+        
+        if : # not passible
+            # rearrange
+            pass
+        else:
+
+        # 
+
+
+
+
+1 2 3 4
+1 2 4 3
+
+1 2 4 3
+1 
+
+
+2 3 1
+
+
+# 确定 2 属于哪一组
+1 + (2 3)
+2 + (1 3)
+3 + (1 2)
+
+# 确定 3 属于哪一组
+1 + (3)
+3 + (1)
+
+# 确定 1 属于哪一组
+
+0
+
+
+        idx = []
+        org = [i+1 for i in range(len(nums))]
+
+        for i in range(len(nums)):    
+            idx.append(org.pop(org.index(nums[i])))
+        for i in range(len(nums)-1, -1, -1):
+            if idx[i] != 0:
+                idx[i] += 1
+                break
+        for i in range(len(nums)):
+            nums[i] = idx[i] * (i+1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
