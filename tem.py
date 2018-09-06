@@ -85,15 +85,41 @@ class Solution(object):
             if "/*" in cur:
             if "//" in cur:
 
+class Solution(object):
+    def numDecodings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # 考虑最多能有几个2
+        d={'1':'','2':'','3':'','4':'','5':'','6':'','7':'','8':'','9':'','10':'',
+          '11':'','12':'','13':'','14':'','15':'','16':'','17':'','18':'','19':'','20':'',
+          '21':'','22':'','23':'','24':'','25':'','26':'',}
+        
+        t = len(s)
+        maxN = int(s/2)
+        for k in range(maxN+1): # 6选2
+            nums = [i for i in range([0]*(t-n*2+n))] 
+            result = []
+            tem = [0] * k
+            n = len(nums)
+            gen(0, 0)
+            get(result)
 
-
-
-
-
-
-
-
-
+        def gen(xi, ni):
+            if ni == n:
+                result.append(copy.copy(tem))
+                return 
+            for i in range(xi, n):
+                tem[ni] = nums[i]
+                gen(xi+1, ni+1)
+        
+        def get(result):
+            idx = -1
+            for i in range(len(result)):
+                 
+                result[i]
+        
 
 
 
