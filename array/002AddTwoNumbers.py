@@ -9,7 +9,15 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 """
-
+"""
+comment
+同时遍历 l1 l2
+// 10 整数除法，除以10
+% 10 除以10的余数
+如果l1 还没完，就直接上l1，否者不做
+如果l2 还没完，把l2接上l1
+如果l2 还没完，直接接上l2，否者不做
+"""
 """
 My
 """
@@ -77,13 +85,6 @@ class Solution(object):
 """
 Fast
 """
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-
 class Solution(object):
 
     def addTwoNumbers(self, l1, l2):

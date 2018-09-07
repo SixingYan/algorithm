@@ -16,7 +16,11 @@ Output:
 ]
 """
 """
-Comments
+Comments 生成所有可能的最好写法
+def f(nums):
+  out=[[]]
+  for n in nums:
+    out+=[i+[n] for i in out]
 """
 """
 My

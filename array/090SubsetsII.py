@@ -14,7 +14,8 @@ Output:
 ]
 """
 """
-Comments
+Comments 
+直接的做法就是 先正常生成 所有子集，再做去除重复
 """
 """
 My
@@ -25,24 +26,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        nlen = len(nums)
-        if nlen == 0:
-            return [[]]
-        nums = sorted(nums)
-        result = set([])
-        for i in range(2**nlen):
-            indxs = self.genIndx(i, nlen)
-            result.add(tuple([nums[i] for i in range(nlen) if indxs[i] == '1']))
-        return list(result)
-    def genIndx(self, n, strlen):
-        b2str = str(bin(n))[2:]
-        b2len = len(b2str)
-        if b2len < strlen:
-            b2str = '0' * (strlen-b2len) + b2str
-        return list(b2str)
+        out = [[]]
+        for n in sorted(nums):
+            out += [i+[n] for i in out]
+        rst = set([tuple(i) for i in out])
+        return list([list(i) for i in rst])
 """
 Fast
-"""
+"""   
 class Solution(object):
     def onenum(self, x, n):
         return [[x]*i for i in range(n+1)]
