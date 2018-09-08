@@ -7,7 +7,16 @@ Input:  1->2->6->3->4->5->6, val = 6
 Output: 1->2->3->4->5
 """
 """
-Comments
+Comments 借助一个preNode
+while p and p.val = val:
+    p=p.next
+pre = None
+while p:
+    if pre == val:
+        pre.next = p.next
+    else:
+        pre = p
+    p = p.next
 """
 """
 My
@@ -53,7 +62,7 @@ class Solution(object):
         pre = None
         while p:
             if p.val==val:
-                pre.next  = p.next
+                pre.next = p.next
             else:
                 pre = p
             p = p.next
