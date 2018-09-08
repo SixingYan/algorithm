@@ -10,6 +10,7 @@ What if the inputs contain unicode characters? How would you adapt your solution
 """
 """
 Comments
+数两个词语的字母数量
 """
 """
 My

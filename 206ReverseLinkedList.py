@@ -12,6 +12,7 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 """
 Comments
 循环的方法也是看discuss的
+
 """
 """
 My
@@ -21,7 +22,6 @@ My
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-
 class Solution(object):
     def reverseList(self, head):
         """

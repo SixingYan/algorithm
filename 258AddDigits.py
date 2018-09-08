@@ -10,7 +10,8 @@ Follow up:
 Could you do it without any loop/recursion in O(1) runtime?
 """
 """
-Comments
+Comments 
+My实现比较简单
 """
 """
 My
