@@ -10,4 +10,4 @@
 
 - heap sort
 
-- 归并排序
+- merge sort

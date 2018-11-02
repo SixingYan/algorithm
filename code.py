@@ -1,6 +1,133 @@
-def ():
+23
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-    pass
+class Solution(object):
+
+
+    def function():
+        pass
+
+
+        # visit around
+        lists = [l for l in lists if l is not None]
+        if len(lists) == 1:
+            return lists[0]
+        if len(lists) == 0:
+            return None
+        vd = {}
+        for i in range(len(lists)): 
+            lst = lists[i]
+            while lst is not None:
+                ky = lst.val
+                if not ky in vd.keys():
+                    vd[ky] = [lst, lst]
+                else:
+                    vd[ky][1].next = lst
+                    vd[ky][1] = vd[ky][1].next
+                lst = lst.next
+                vd[ky][1].next = None
+
+        vl = sorted(list(vd.items()),key=lambda v: v[0])
+        head = vl[0][1][0]
+        for i in range(1, len(vl)):
+            t = vl[i-1][1][1]
+            t.next = vl[i][1][0]
+            t = t.next
+        return head
+
+
+
+
+
+
+
+
+
+
+
+
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        if len(lists) == 1:
+            return lists[0]
+        if len(lists) == 0:
+            return None
+
+        main = lists[0]
+        for i in range(1, len(lists)):
+            main = self.merge(main, lists[i])
+
+        return main
+
+    def merge(self, a, b):
+        if a is None and b is None:
+            return None
+        if a is None and b is not None:
+            return b
+        if a is not None and b is None:
+            return a
+        
+        if a.val < b.val:
+            head = a
+            a = a.next
+        else:
+            head = b
+            b = b.next
+        t = head
+
+        while a is not None and b is not None:
+            if a.val < b.val:
+                t.next = a
+                a = a.next
+            else:
+                t.next = b
+                b = b.next
+            t = t.next
+        while a is not None:
+            t.next = a
+            a = a.next
+            t = t.next
+        while b is not None:
+            t.next = b
+            b = b.next
+            t = t.next
+
+        return head
+
+
+    def ():
+        lists = [l for l in lists if l is not None]
+        if len(lists) == 1:
+            return lists[0]
+        if len(lists) == 0:
+            return None
+        
+        # set head
+        sorted(lists, key=lambda v: v.val)
+        head = lists[0]
+        lists[0] = lists[0].next
+        if lists[0] is None:
+            del lists[0]
+        t = head
+        sorted(lists, key=lambda v: v.val)
+        # visit
+        while len(lists) > 0:
+            for i in range(len(lists)):
+                t.next = lists[i]
+                lists[i] = lists[i].next
+                t = t.next
+            lists = [l for l in lists if l is not None]
+            sorted(lists, key=lambda v: v.val)
+        return head
+
+
 
 67
     def function():
