@@ -8,103 +8,46 @@
 
 class Solution(object):
 
-    def function(self, S, K):
-        # special case
-        S = S.upper()
-        parts = S.split('-')
-        result = None
-        #
-        if len(parts) == 1:
-            if len(parts[0]) > K:
-                words = list(parts[0])
-                result = ''.join(words[:K]) + '-' + ''.join(words[K:])
+    def function(self, secret, guess):
+        A = 0
+        B = 0
+        sD = {}
+        gD = {}
+        for i in range(len(secret)):
+            if secret[i] == guess[i]:
+                A += 1
             else:
-                result = parts[0]
-            return result
-        #
-        words = []
-        sent = S.replace('-', '')[::-1]
-        while i < len(sent):
-            words.append(sent[i:i + K])
-            i = i + K
+                if secret[i] in sD.keys():
+                    sD[secret[i]] += 1
+                else:
+                    sD[secret[i]] = 1
+                if guess[i] in gD.keys():
+                    gD[guess[i]] += 1
+                else:
+                    gD[guess[i]] = 1
+        for sky in sD.keys():
+            if sky in gD.keys():
+                if sD[sky] <= gD[sky]:
+                    B += sD[sky]
+                else:
+                    B += gD[sky]
+        return str(A)+'A'+str(B)+'B'
 
-        return '-'.join(w[::-1] for w in words)
 
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        if len(lists) == 1:
-            return lists[0]
-        if len(lists) == 0:
-            return None
 
-        main = lists[0]
-        for i in range(1, len(lists)):
-            main = self.merge(main, lists[i])
 
-        return main
 
-    def merge(self, a, b):
-        if a is None and b is None:
-            return None
-        if a is None and b is not None:
-            return b
-        if a is not None and b is None:
-            return a
 
-        if a.val < b.val:
-            head = a
-            a = a.next
-        else:
-            head = b
-            b = b.next
-        t = head
 
-        while a is not None and b is not None:
-            if a.val < b.val:
-                t.next = a
-                a = a.next
-            else:
-                t.next = b
-                b = b.next
-            t = t.next
-        while a is not None:
-            t.next = a
-            a = a.next
-            t = t.next
-        while b is not None:
-            t.next = b
-            b = b.next
-            t = t.next
 
-        return head
 
-    def ():
-        lists = [l for l in lists if l is not None]
-        if len(lists) == 1:
-            return lists[0]
-        if len(lists) == 0:
-            return None
 
-        # set head
-        sorted(lists, key=lambda v: v.val)
-        head = lists[0]
-        lists[0] = lists[0].next
-        if lists[0] is None:
-            del lists[0]
-        t = head
-        sorted(lists, key=lambda v: v.val)
-        # visit
-        while len(lists) > 0:
-            for i in range(len(lists)):
-                t.next = lists[i]
-                lists[i] = lists[i].next
-                t = t.next
-            lists = [l for l in lists if l is not None]
-            sorted(lists, key=lambda v: v.val)
-        return head
+
+
+
+
+
+
 
 
 67
