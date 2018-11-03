@@ -5,43 +5,30 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
 
+    def function(self, S, K):
+        # special case
+        S = S.upper()
+        parts = S.split('-')
+        result = None
+        #
+        if len(parts) == 1:
+            if len(parts[0]) > K:
+                words = list(parts[0])
+                result = ''.join(words[:K]) + '-' + ''.join(words[K:])
+            else:
+                result = parts[0]
+            return result
+        #
+        words = []
+        sent = S.replace('-', '')[::-1]
+        while i < len(sent):
+            words.append(sent[i:i + K])
+            i = i + K
 
-    def function():
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return '-'.join(w[::-1] for w in words)
 
     def mergeKLists(self, lists):
         """
@@ -66,7 +53,7 @@ class Solution(object):
             return b
         if a is not None and b is None:
             return a
-        
+
         if a.val < b.val:
             head = a
             a = a.next
@@ -94,14 +81,13 @@ class Solution(object):
 
         return head
 
-
     def ():
         lists = [l for l in lists if l is not None]
         if len(lists) == 1:
             return lists[0]
         if len(lists) == 0:
             return None
-        
+
         # set head
         sorted(lists, key=lambda v: v.val)
         head = lists[0]
@@ -119,7 +105,6 @@ class Solution(object):
             lists = [l for l in lists if l is not None]
             sorted(lists, key=lambda v: v.val)
         return head
-
 
 
 67

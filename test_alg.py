@@ -20,36 +20,16 @@ class a():
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        lists = [l for l in lists if l is not None]
-        if len(lists) == 1:
-            return lists[0]
-        if len(lists) == 0:
-            return None
-        vd = {}
-        for i in range(len(lists)): 
-            lst = lists[i]
-            print('now is '+str(i))
-            while lst is not None:
-                ky = lst.val
-                print ('val is '+str(ky))
-                if not ky in vd.keys(): 
-                    print('create')
-                    vd[ky] = [lst, lst]
-                else:
-                    print('input')
-                    vd[ky][1].next = lst
-                    vd[ky][1] = vd[ky][1].next
-                lst = lst.next
-                vd[ky][1].next = None
-                printLink(vd[ky][0])
-            print()
-        vl = sorted(list(vd.items()),key=lambda v: v[0])
-        head = vl[0][1][0]
-        for i in range(1, len(vl)):
-            t = vl[i-1][1][1]
-            t.next = vl[i][1][0]
-            t = t.next
-        return head
+        
+
+
+
+
+
+
+
+
+
 
 
         """
