@@ -22,10 +22,18 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 """
 Comments
 最后return的地方，那样写才不会 time limit exceed
+
+Fast 方法
+计数A和B的长度（假设A长）
+那么先让A走|A|-|B|步，然后A，B再同时走，直到两者的node相同，此时就是相交点
+
+另：如果只是判断是否有相交的点，就是上面的方法中，如果一直到结尾都不出现相同，就是没有相交点
 """
 """
 My
 """
+
+
 class Solution(object):
 
     def getIntersectionNode(self, headA, headB):
@@ -70,6 +78,8 @@ class Solution(object):
 """
 Fast
 """
+
+
 class Solution(object):
 
     def getIntersectionNode(self, headA, headB):
