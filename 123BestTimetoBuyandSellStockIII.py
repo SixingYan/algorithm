@@ -26,7 +26,18 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 """
 """
 Comments
-这题是hard 阿里有出过，很难理解。My 参考了 Fast的解法
+这题是hard 阿里有出过，很难理解。
+
+My 参考了 动态规划的解法
+求两次交易的最大收益，转化为在原数组中求两段最大子序列的问题，
+找到 0~i 最大差值的子序列，
+找到 i~n 最大差值的子序列
+
+然后看同一个i时刻，两者之和最大，就是选择卖出买入的时刻，
+两者之和就是收益最大的值
+
+
+Fast的解法比较巧妙
 
 这里只允许两次交易，依次考虑:
 1. 如果当前是第二支股票卖出
@@ -40,17 +51,36 @@ My
 """
 
 
-class Solution:
+class Solution(object):
 
-    def maxProfit(self, prices: List[int]) -> int:
-        hd1 = hd2 = float("-inf")  # 第一次买，第二次买
-        re1 = re2 = 0  # 第一次卖，第二次卖
-        for p in prices:
-            re2 = max(re2, hd2 + p)
-            hd2 = max(hd2, re1 - p)
-            re1 = max(re1, hd1 + p)
-            hd1 = max(hd1, -p)
-        return re2
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+        n = len(prices)
+        dp1 = [0] * n  # 0~i 最大收益
+        dp2 = [0] * n  # n~i 最大收益
+
+        # 从左到右找最小
+        minp = prices[0]
+        for i in range(1, n):
+            # 找到最小
+            minp = min(minp, prices[i])
+            # 更新截止到当前的最大收益(算之前的收益（不买卖），还是卖出)
+            dp1[i] = max(dp1[i - 1], prices[i] - minp)
+
+        # 从右到左找最大（从后往前遍历）
+        maxp = prices[-1]
+        for i in range(n - 2, -1, -1):
+            maxp = max(maxp, prices[i])
+            # 从卖出看什么时候买入，因为卖出不超过最后一天
+            dp2[i] = max(dp2[i + 1], maxp - prices[i])
+        # 看哪一个时刻收益高
+        return max(dp1[i] + dp2[i] for i in range(n))
+
 """
 Fast
 """
