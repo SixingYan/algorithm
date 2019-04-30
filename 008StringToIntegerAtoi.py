@@ -100,8 +100,9 @@ class Solution(object):
 
         num = 0
         while i < n:
-            if str_[i] in string.digits:
-                num = num * 10 + (ord(str_[i]) - ord('0'))
+            if str_[i] in string.digits: # 这里用这个方法来确定是不是数字
+            # 也可以用 str.isdigit() 来判断是不是digit
+                num = num * 10 + (ord(str_[i]) - ord('0')) # 这里用ascii码来做
             else:
                 break
 
